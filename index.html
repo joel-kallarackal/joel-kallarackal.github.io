@@ -1,1 +1,126 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joel Kallarackal</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background: #2c3e50;
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    nav {
+      background: #34495e;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #fff;
+      padding: 1rem;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background: #1abc9c;
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section {
+      margin-bottom: 3rem;
+    }
+
+    .section h2 {
+      color: #2c3e50;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #2c3e50;
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      nav {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Joel Kallarackal</h1>
+    <p>Robotics | AI | Research | Development</p>
+  </header>
+
+  <nav>
+    <a href="#about">About Me</a>
+    <a href="#projects">Projects</a>
+    <a href="#interests">Interests</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="container">
+    <section id="about" class="section">
+      <h2>About Me</h2>
+      <p>
+        I am Joel Kallarackal, a passionate robotics and AI researcher with experience in autonomous systems, sensor integration, and simulation. I enjoy building systems that learn, adapt, and interact with their environment intelligently.
+      </p>
+    </section>
+
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+      <ul>
+        <li><strong>Autonomous Agricultural Vehicle</strong> – SLAM and navigation in GPS-denied environments.</li>
+        <li><strong>AR Testing Framework</strong> – Developed an AR-based simulation system for safe and efficient robot testing.</li>
+        <li><strong>Multi-Robot Path Planning</strong> – Implemented cooperative grid-based planning for differential drive robots.</li>
+      </ul>
+    </section>
+
+    <section id="interests" class="section">
+      <h2>Other Interests</h2>
+      <p>
+        Beyond robotics, I love exploring visual computing, cognitive systems, and applying machine learning in creative and impactful ways. I’m also a fan of clean UI/UX design and game-based simulations.
+      </p>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p>Email: joel.k@example.com</p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/joelkallarackal" target="_blank">linkedin.com/in/joelkallarackal</a></p>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2025 Joel Kallarackal. All rights reserved.
+  </footer>
+</body>
+</html>
