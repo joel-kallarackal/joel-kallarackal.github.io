@@ -2,8 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Joel Kallarackal</title>
+  <!-- Font Awesome CDN for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+  />
   <style>
     body {
       margin: 0;
@@ -55,6 +61,87 @@
 
     .section h2 {
       color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+
+    /* About Me Layout */
+        .about-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .about-container img {
+      max-width: 250px;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 0; /* Rectangular */
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 250px;
+      margin-top: 0;
+    }
+
+    .about-text > * {
+      margin-top: 0;
+    }
+
+
+    /* Projects media styling */
+    .project-media {
+      max-width: 100%;
+      height: auto;
+      margin: 0.5rem 0;
+      border-radius: 8px;
+    }
+
+    /* Contact section layout similar to About Me */
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .contact-content {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .contact-list li {
+      margin: 1rem 0;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: #2c3e50;
+    }
+
+    .contact-list li i {
+      color: #1abc9c;
+      min-width: 24px;
+      font-size: 1.5rem;
+    }
+
+    /* Remove underline from contact links */
+    .contact-list li a {
+      color: #2c3e50;
+      text-decoration: none;
+    }
+
+    .contact-list li a:hover {
+      text-decoration: underline;
+      color: #1abc9c;
     }
 
     footer {
@@ -72,6 +159,21 @@
       nav {
         flex-direction: column;
       }
+
+      .about-container,
+      .contact-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .about-text,
+      .contact-content {
+        text-align: center;
+      }
+
+      .contact-list li {
+        justify-content: center;
+      }
     }
   </style>
 </head>
@@ -84,38 +186,81 @@
   <nav>
     <a href="#about">About Me</a>
     <a href="#projects">Projects</a>
-    <a href="#interests">Interests</a>
     <a href="#contact">Contact</a>
   </nav>
 
   <div class="container">
     <section id="about" class="section">
       <h2>About Me</h2>
-      <p>
-        I am Joel Kallarackal, a passionate robotics and AI researcher with experience in autonomous systems, sensor integration, and simulation. I enjoy building systems that learn, adapt, and interact with their environment intelligently.
-      </p>
+      <div class="about-container">
+        <img src="media/me2.jpeg" alt="Joel's Photo" />
+        <div class="about-text">
+          <p>
+            I am Joel Kallarackal. I am passionate about robotics and AI. I enjoy building systems that learn, adapt, and interact with their environment intelligently.
+          </p>
+          <h3>Education</h3>
+          <ul>
+            <li>B.Tech in Engineering Physics, IIT Madras (Expected 2026)</li>
+            <!-- <li>IDDD in Robotics, IIT Madras</li>
+            <li>Courses: Machine Learning, Motion Planning, Control Systems, Information Theory</li> -->
+          </ul>
+          <h3>Experience</h3>
+          <ul>
+            <li>Research Intern, Biorobotics Lab, Carnegie Mellon University(Ongoing)</li>
+            <li>Research Intern, Artificial Intelligence & Robotics Lab, IISc Bangalore – Summer 2024</li>
+            <li>Undergraduate Researcher, Inspire Lab, IIT Madras</li>
+            <li>Software Engineer, Abhiyaan(Autonomous Vehicle Student Team), IIT Madras</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <section id="projects" class="section">
       <h2>Projects</h2>
-      <ul>
-        <li><strong>Autonomous Agricultural Vehicle</strong> – SLAM and navigation in GPS-denied environments.</li>
-        <li><strong>AR Testing Framework</strong> – Developed an AR-based simulation system for safe and efficient robot testing.</li>
-        <li><strong>Multi-Robot Path Planning</strong> – Implemented cooperative grid-based planning for differential drive robots.</li>
-      </ul>
-    </section>
 
-    <section id="interests" class="section">
-      <h2>Other Interests</h2>
-      <p>
-        Beyond robotics, I love exploring visual computing, cognitive systems, and applying machine learning in creative and impactful ways. I’m also a fan of clean UI/UX design and game-based simulations.
-      </p>
+      <div>
+        <h3>Bolt - Autonomous Electric Golf Cart</h3>
+        <!-- <p>SLAM and navigation in GPS-denied environments using LIO-SAM and FAST-LIO.</p> -->
+        <!-- <img src="bolt.jpeg" alt="Bolt" class="project-media" />
+        <video autoplay loop muted playsinline width="640">
+          <source src="output.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video> -->
+        <div class="media-side-by-side">
+          <img src="media/bolt.jpeg" alt="Project Image" class="side-photo" width="400">
+          <video autoplay loop muted playsinline width="560" class="side-video">
+            <source src="media/output.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+      </div>
+
+      <div>
+        <h3>Vikram - Autonomous Ground Robot</h3>
+        <p>Intelligent Ground Vehicle Competition(IGVC), Michigan, USA</p>
+        <img src="media/igvc2.jpeg" alt="Vikram" class="project-media" width="400"/>
+      </div>
+
+      <div>
+        <h3>Multi-Robot Path Planning with Deadlock Mitigation</h3>
+        <p>Implemented cooperative grid-based planning for differential drive robots.</p>
+        <img src="media/multi-robot.jpg" alt="Multi Robot" class="project-media" />
+      </div>
     </section>
 
     <section id="contact" class="section">
       <h2>Contact</h2>
-      <p>Email: joel.k@example.com</p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/joelkallarackal" target="_blank">linkedin.com/in/joelkallarackal</a></p>
+      <div class="contact-container">
+        <div class="contact-content">
+          <ul class="contact-list">
+            <li><i class="fas fa-phone"></i>+91 94972 14645</li>
+            <li><i class="fas fa-envelope"></i><a href="mailto:joel.kallarackal17@example.com">joel.kallarackal17@example.com</a></li>
+            <li><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/joel-kallarackal-883b9b266/" target="_blank" rel="noopener noreferrer">Joel Kallarackal</a></li>
+            <li><i class="fab fa-instagram"></i><a href="https://www.instagram.com/joelll.17" target="_blank" rel="noopener noreferrer">joelll.17</a></li>
+          </ul>
+        </div>
+      </div>
     </section>
   </div>
 
