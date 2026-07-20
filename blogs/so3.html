@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    (function() {
+      const theme = localStorage.getItem('theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SO(3): The Hidden Structure Behind Every Rotation | Joel Kallarackal</title>
+
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a class="nav-brand" href="../index.html">Joel Kallarackal</a>
+      <ul class="nav-links">
+        <li><a href="../index.html">About</a></li>
+        <li><a href="../publications.html">Publications</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../assets/pdf/cv.pdf" target="_blank">CV</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- Page header -->
+    <div class="page-header">
+      <h1>SO(3): The Hidden Structure Behind Every Rotation</h1>
+      <p>April 7, 2026 &mdash; <span class="project-tag">Group Theory</span> <span class="project-tag">Robotics</span></p>
+    </div>
+
+    <!-- Blog content -->
+    <div class="blog-list">
+      <div class="blog-item">
+        <div class="blog-content">
+
+          <p>Rotations are everywhere: robotics, graphics, machine learning. Yet, a subtle mistake is common — treating them like ordinary vectors. This misconception can lead to strange bugs, instability, and outright wrong behavior. In this article, we’ll explore how rotations live on a curved space called <strong>SO(3)</strong>, and the practical consequences of ignoring this fact.</p>
+          <br />
+          <h2>Brief Introduction to Groups</h2>
+          <p>Before we talk about rotations, a quick refresher on groups</p>
+          <p>A group is a set with an operation that satisfies four properties:</p>
+          <ol>
+            <li style="margin-left: 30px;"><strong>Closure:</strong> Applying the operation to any two elements of the set results in an element of the set.</li>
+            <li style="margin-left: 30px;"><strong>Associativity:</strong> : The way elements are grouped when performing the operation does not affect the result.</li>
+            <li style="margin-left: 30px;"><strong>Identity:</strong> There exists an identity element in the set such that applying the operation with it leaves any element unchanged.</li>
+            <li style="margin-left: 30px;"><strong>Inverses:</strong> For every element in the set, there is another element that combines with it to produce the identity element.</li>
+          </ol>
+            <p>The group of 3D rotations is called <strong>SO(3)</strong>, which stands for “Special Orthogonal group in 3 dimensions.”</p>
+          
+          <br />
+          <h2>Rotations as a Group</h2>
+          <p>Mathematically, 3D rotations form the <strong>special orthogonal group SO(3)</strong>. This is a 3-dimensional manifold embedded in 9-dimensional space. Conceptually, it’s “curved”: small changes behave locally like vectors, but large changes cannot be added or subtracted like in a vector space.</p>
+          <p>Think of it like the surface of a sphere: you can move along small arcs and treat them almost linearly, but drawing a “straight line” across the sphere is nonsensical.</p>
+
+          <h2>Common Mistakes</h2>
+          <ul>
+            <li><strong>Linear subtraction of rotations:</strong> leads to invalid matrices or quaternions.</li>
+            <li><strong>Euler angle averaging:</strong> can produce gimbal lock or unexpected rotations.</li>
+            <li><strong>Gradient updates ignoring the manifold:</strong> naive optimization drifts off SO(3).</li>
+            <li><strong>Direct addition of rotation increments:</strong> accumulates error over time.</li>
+          </ul>
+
+          <h2>Correct Approaches</h2>
+          <p>Instead of subtracting rotations, compute an error in <strong>tangent space</strong>:</p>
+          <pre><code>R_error = R_target * R_current.T  # matrix multiplication
+rotation_vector = log(R_error)        # maps rotation to 3D vector in tangent space</code></pre>
+          <p>This gives a meaningful axis-angle error vector that respects the geometry of SO(3).</p>
+
+          <p>For interpolation, use <strong>SLERP</strong> (Spherical Linear Interpolation) or exponential maps. For optimization or learning, always respect the manifold structure.</p>
+
+          <h2>Practical Implications</h2>
+          <ul>
+            <li><strong>Robotics:</strong> trajectory tracking fails if rotations are treated linearly.</li>
+            <li><strong>Machine Learning:</strong> predicting rotations with naive losses can be unstable.</li>
+            <li><strong>Simulation:</strong> small rotation increments accumulate error if naive addition is used.</li>
+          </ul>
+
+          <h2>Takeaway</h2>
+          <p>Rotations are deceptively tricky. They live on a curved manifold, not a flat vector space. Understanding this is crucial for robust robotics, graphics, and ML applications. Whenever you manipulate rotations, ask yourself: <em>“Am I respecting the geometry of SO(3)?”</em></p>
+
+          <p><a href="../blog.html" class="back-link">&larr; Back to Blog</a></p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© 2026 Joel Kallarackal &mdash; Built with <a href="https://pages.github.com" target="_blank">GitHub Pages</a>.</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
